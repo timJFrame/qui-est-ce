@@ -1,0 +1,17 @@
+{
+  "name": "qui-est-ce",
+  "version": "1.0.0",
+  "description": "A French language learning game",
+  "main": "index.js",
+  "repository": "git@github.com:timJFrame/qui-est-ce.git",
+  "author": "timframe <t.f.retouching@gmail.com>",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18"
+  },
+  "scripts": {
+    "dev": "npx nodemon"
+  }
+}
