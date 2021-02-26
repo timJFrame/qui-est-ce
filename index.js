@@ -1,21 +1,20 @@
 import express from 'express'
-import mongoose from 'mongoose'
+import Card from './models/cards.js'
+import { port } from './config/enviroment.js'
+import  logger  from './lib/logger.js'
+import connectToDataBase from './lib/connectToDb.js'
 const app = express()
-const port = 4000
-const dbURI = 'mongodb://localhost/qui-est-ce-db'
-
-
 
 async function startServer(){
   try {
-    await mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+    
 
     app.listen(4000, () => console.log(`Up and running on port ${port}`))
 
-    app.use((req, res, next) => {
-      console.log(`Incoming Request: ${req.method} -${req.url}`)
-      next()
-    })
+    connectToDataBase()
+
+    app.use(logger)
+  
     
   } catch (err){
     console.log('Something went wrong went starting the app')
@@ -25,17 +24,7 @@ async function startServer(){
 
 startServer()
 
-const personCardSchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true },
-  gender: { type: String, required: true },
-  eyeColor: { type: String, required: true },
-  hairColor: { type: String, required: true },
-  glasses: { type: Boolean, required: true },
-  moustache: { type: Boolean, required: true },
-  beard: { type: Boolean, required: true },
-})
 
-const Card = mongoose.model('Card', personCardSchema)
 app.use(express.json())
 
 app.get('/cards', async (_reg, res) => {
@@ -65,4 +54,29 @@ app.get('/cards/:id', async (req, res) => {
   }
 })
 
+app.delete('/cards/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const cardToDelete = await Card.findById(id)
+    if (!cardToDelete) throw new Error()
+    await cardToDelete.remove()
+    return res.sendStatus(204)
+  } catch (err){
+    console.log(err)
+    return res.status(404).json({ 'message': 'Not Found' })
+  }
+})
 
+app.put('/cards/:id', async(req, res) => {
+  const { id } = req.params
+  try {
+    const cardToEdit = await Card.findById(id)
+    if (!cardToEdit) throw new Error()
+    Object.assign(cardToEdit, req.body)
+    await cardToEdit.save()
+    return res.status(202).json(cardToEdit)
+  } catch (err){
+    console.log(err)
+    return res.status(404).json({ 'message': 'Not Found' })
+  }
+})
