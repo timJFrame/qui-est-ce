@@ -12,6 +12,7 @@
     "mongoose": "^5.11.18"
   },
   "scripts": {
-    "dev": "npx nodemon"
+    "dev": "npx nodemon",
+    "seed": "node db/seeds.js"
   }
 }
