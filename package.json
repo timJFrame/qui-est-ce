@@ -8,8 +8,10 @@
   "type": "module",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
-    "mongoose": "^5.11.18"
+    "mongoose": "^5.11.18",
+    "mongoose-unique-validator": "^2.0.3"
   },
   "scripts": {
     "dev": "npx nodemon",
