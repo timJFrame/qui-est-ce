@@ -16,5 +16,9 @@ router.route('/cards/:id')
 
 router.route('/register')
   .post(auth.registerUser)
+  .get(auth.userIndex)
+
+router.route('/register/:id')
+  .delete(auth.deleteUser)
 
 export default router

@@ -71,3 +71,6 @@ const personCardSchema = new mongoose.Schema({
   beard: false,
 },
 ```
+<p>Next I moved onto creating the model schema for a user. Mostly following the process I had used earlier to create the card schema. However the user schema required additional code. Firstly setting the passwordConfirmation as a virtual field so it wouldn’t be stored in the database. Checking the password and password confirmation match or an error would be thrown. Adding the ‘bcrypt’ dependency that was used to hash the password before it was stored to the database and also using it to hash the password supplied by a user when they log back-into the website. So it can be compared to the hashed password stored in the database. Lastly adding ‘Mongoose-Unique-Validator’ to get better handling.</p>
+
+<p>Moving onto creating a new controller to register a user. Adding the controller to the ‘router.js’ file in the ‘config’ folder and testing the new route in Insomnia. After that I moved onto creating the seeding data for user profiles. I decided on creating 20 users. 10 Men and 10 Women. With 10 at beginner level, 5 at an intermediate level and 5 at an advanced level of competency in speaking French Added the new data to the seeding function and ran the seeding function to test it was working correctly.</p>
