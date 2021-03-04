@@ -74,3 +74,41 @@ const personCardSchema = new mongoose.Schema({
 <p>Next I moved onto creating the model schema for a user. Mostly following the process I had used earlier to create the card schema. However the user schema required additional code. Firstly setting the passwordConfirmation as a virtual field so it wouldn’t be stored in the database. Checking the password and password confirmation match or an error would be thrown. Adding the ‘bcrypt’ dependency that was used to hash the password before it was stored to the database and also using it to hash the password supplied by a user when they log back-into the website. So it can be compared to the hashed password stored in the database. Lastly adding ‘Mongoose-Unique-Validator’ to get better handling.</p>
 
 <p>Moving onto creating a new controller to register a user. Adding the controller to the ‘router.js’ file in the ‘config’ folder and testing the new route in Insomnia. After that I moved onto creating the seeding data for user profiles. I decided on creating 20 users. 10 Men and 10 Women. With 10 at beginner level, 5 at an intermediate level and 5 at an advanced level of competency in speaking French Added the new data to the seeding function and ran the seeding function to test it was working correctly.</p>
+
+<p>With the user profile data seeded to the database I moved onto creating a login controller to the, ‘auth.js’ file. That would assign a user an authorisation token if a user provided a valid email and password. Then created a new route in the ‘router.js’ file to handle the login controller. From there I moved onto making a secure route that would check if a user has a provided a valid token when they are attempting to preform a particular action. The secure route can then be placed before any the URL of a request. If a user doesn’t provide a valid token they will not be able to proceed.</p>
+
+<p><strong>The code snippet below is secureRoute function</strong></p>
+
+```
+export default async function secureRoute(req, res, next){  
+  try {
+
+    //*If user has no token throw error
+    if (!req.headers.authorization){
+      throw new Error('Missing Required Header')
+    }
+
+    //*Extracts the token from the headers
+    const token = req.headers.authorization.replace('Bearer ', '')
+
+    //*Checks the token and the secert
+    const payload = jwt.verify(token, secret)
+
+    //*Looks for user via user id stored in the token
+    const userToVerify = await User.findById(payload.sub)
+
+    if (!userToVerify){
+      throw new Error('User Not Found')
+    }
+
+    req.currentUser = userToVerify
+    console.log('reg current user is', req.currentUser)
+
+    next()
+
+  } catch (err){
+    console.log('✋ Authorisation Error', err.name, err.message)
+    return res.status(401).json({ message: 'Unathorized', detail: err.message })
+  }
+}
+```
