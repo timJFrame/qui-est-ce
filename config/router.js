@@ -18,6 +18,9 @@ router.route('/register')
   .post(auth.registerUser)
   .get(auth.userIndex)
 
+router.route('/login')
+  .post(auth.loginUser)
+
 router.route('/register/:id')
   .delete(auth.deleteUser)
 
