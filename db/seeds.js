@@ -18,7 +18,12 @@ async function seedDatabase(){
     const users = await User.create(userData)
     console.log(`${users.length} users created`)
 
-    const cards = await Card.create(cardData)
+    const cardsWithOwners = cardData.map(card => {
+      card.owner = users[0]._id
+      return card
+    })
+
+    const cards = await Card.create(cardsWithOwners)
     console.log(`${cards.length} cards created`)
 
     await mongoose.connection.close()

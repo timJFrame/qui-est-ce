@@ -79,8 +79,8 @@ export default [{
   profilePhoto: 'https://cbdconsulting.com/wp-content/uploads/2017/07/Profile-Photo-Amy-Jimenez-square.jpg',
 },
 {
-  username: 'Mike',
-  email: 'mike@gmail.com',
+  username: 'Matthew',
+  email: 'matthew@gmail.com',
   password: 'pass',
   passwordConfirmation: 'pass',
   experience: 'advanced',

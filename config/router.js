@@ -1,6 +1,7 @@
 import express from 'express'
 import cards from '../controllers/cards.js'
 import auth from '../controllers/auth.js'
+import users from '../controllers/users.js'
 import secureRoute from '../lib/secureRoute.js'
 
 const router = express.Router()
@@ -17,12 +18,19 @@ router.route('/cards/:id')
 
 router.route('/register')
   .post(auth.registerUser)
-  .get(auth.userIndex)
+ 
 
 router.route('/login')
   .post(auth.loginUser)
 
-router.route('/register/:id')
-  .delete(auth.deleteUser)
+router.route('/profile')
+  .get(secureRoute, users.profile)
+
+router.route('/users')
+  .get(users.index)
+
+router.route('/users/:id')
+  .get(users.show)
+  .delete(secureRoute, users.delete)
 
 export default router

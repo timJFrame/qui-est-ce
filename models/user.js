@@ -12,6 +12,14 @@ const userSchema = new mongoose.Schema({
   profilePhoto: { type: String, required: true },
 })
 
+userSchema.set('toJSON', {
+  virtuals: true,
+  transform(_doc, json){
+    delete json.password
+    delete json._v
+    return json
+  },
+})
 
 //*Sets a Virtual Schema for password confirmation that isn't stored in db
 userSchema.virtual('passwordConfirmation')
@@ -19,6 +27,12 @@ userSchema.virtual('passwordConfirmation')
     this._passwordConfirmation = passwordConfirmation
   })
 
+userSchema.virtual('createdCards', {
+  ref: 'Card',
+  localField: '_id',
+  foreignField: 'owner',
+
+})
 
 //*Validates the password and password confirmation match. Will only run when user is created or password is edited
 userSchema.pre('validate', function(next){
@@ -43,5 +57,7 @@ userSchema.methods.validatePassword = function(password){
 }
 
 userSchema.plugin(uniqueValidator)
+
+userSchema.set('toJSON', { virtuals: true })
 
 export default mongoose.model('User', userSchema)
