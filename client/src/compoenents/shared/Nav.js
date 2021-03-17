@@ -2,7 +2,7 @@ import React from 'react'
 // import logo from '../../images/home-page-logo.png'
 import { Link } from 'react-router-dom'
 import 'materialize-css'
-import { Navbar, Icon, NavItem, Button } from 'react-materialize'
+import { Navbar, Icon, Button } from 'react-materialize'
 
 
 
@@ -32,23 +32,24 @@ function Nav(){
       }}
       className="white lighten-2 z-depth-0 "
     >
-      <NavItem className="nav-item">
-        <Link to="/register" className="black-text nav-item-link">
-          
-          <Button
-            node="a"
-            waves="light"
-            className="blue lighten 2"
-          >
+      <Link className="nav-item" to="/register" >
+        <Button
+          waves="light"
+          className="blue lighten 2"
+        >
           Register
-          </Button>
-        </Link>
-      </NavItem>
-      <NavItem className="nav-item">
-        <Link to="/register" className="black-text nav-item-link">
+        </Button>
+      </Link>
+
+      <Link className="nav-item" to="/login" >
+        <Button
+          waves="light"
+          className="blue lighten 2"
+        >
           Login
-        </Link>
-      </NavItem>
+        </Button>
+      </Link>
+      
     </Navbar>
    
     
