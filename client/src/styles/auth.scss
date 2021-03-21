@@ -1,0 +1,9 @@
+.profile-photo-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        max-width: 200px;
+        border-radius: 100%;
+    }
+}

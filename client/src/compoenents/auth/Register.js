@@ -1,27 +1,68 @@
 import React from 'react'
 import { Row, Col, TextInput, Select, Button } from 'react-materialize'
+import { useHistory } from 'react-router-dom'
 import useForm from '../../utils/useform'
 import ImageUpload from '../../utils/ImageUpload'
+import { registerUser, getUserAddress } from '../../lib/api'
 
 function Register(){
 
-  const { formdata, handleChange } = useForm({
+  const history = useHistory()
+
+  const [lat, setLat] = React.useState('')
+  const [lon, setLon] = React.useState('')
+
+  const { formdata, handleChange, setErrors } = useForm({
     username: '',
     email: '',
     password: '',
     passwordConfirmation: '',
     experience: '',
-    latitude: '',
-    longitude: '',
+    latitude: lat,
+    longitude: lon,
     profilePhoto: ''
   })
 
-  console.log(formdata)
+  const handleFormSubmit = async e => {
+    e.preventDefault()
+    try {
+      console.log(formdata)
+      await registerUser(formdata)
+      history.push('/')
+    } catch (err){
+      console.log(err.response.data.errors)
+      setErrors(err.response.data.errors)
+    }
+  }
 
+  const [postCodeData, setPostCodeData] = React.useState({
+    postcode: ''
+  })
+
+  const handlePostCodeChange = (e) => {
+    setPostCodeData({ ... postCodeData, [e.target.name]: e.target.value })
+  }
+
+
+  const handleFindAddress = async e => {
+    e.preventDefault()
+    try {
+      const { data } = await getUserAddress(postCodeData.postcode)
+      setPostCodeData({ postcode: 'Address Found!!' })
+      // setFormData({ latitude: data[0].lat, longitude: data[0].lon })
+      setLon(data[0].lat)
+      setLat(data[0].lon)
+      console.log()
+    } catch (err){
+      console.log(err)
+    }
+  }
+
+  console.log(formdata)
 
   return (
     <div className="container">
-      <form className="forms">
+      <form className="forms" onSubmit={handleFormSubmit}>
         <Row >
           <Col s={12}>
             <Row >
@@ -126,36 +167,41 @@ function Register(){
               <Col s={6} m={6} l={6}>
                 <TextInput
                   id="TextInput-4"
-                  label="Latitude"
+                  label="Find Location"
                   noLayout
-                  name="latitude"
-                  value={formdata.latitude}
-                  onChange={handleChange}
+                  name="postcode"
+                  value={postCodeData.postcode}
+                  onChange={handlePostCodeChange}
                 />
+              
               </Col>
               <Col s={6} m={6} l={6}>
-                <TextInput
-                  id="TextInput-4"
-                  label="Longitude"
-                  noLayout
-                  name="longitude"
-                  value={formdata.longitude}
-                  onChange={handleChange}
-                />
+               
+                <Button
+                  onClick={handleFindAddress}
+                  node="button"
+                  waves="light"
+                  className="blue lighten 2 form-submit-button">
+              Search
+                </Button>
+               
               </Col>
             </Row>
             <Row>
               <Col s={12} m={12} l={12}>
-                <ImageUpload/>
+
+                <ImageUpload
+                  onChange={handleChange}
+                  value={formdata.profilePhoto}
+                  name="profilePhoto"
+                />
               </Col>
             </Row>
             <Button
               node="button"
               type="submit"
               waves="light"
-              className="blue lighten 2 form-submit-button"
-              
-            >
+              className="blue lighten 2 form-submit-button">
               Submit
             </Button>
 

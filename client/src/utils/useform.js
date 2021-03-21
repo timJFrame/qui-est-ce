@@ -11,6 +11,7 @@ function useForm(intialState){
     const nextErrorState = { ...errors, [e.target.name]: '' } 
     setFormData(nextState)
     setErrors(nextErrorState)
+    
   }
   return {
     formdata,
