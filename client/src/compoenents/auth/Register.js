@@ -8,6 +8,7 @@ import { registerUser, getUserAddress } from '../../lib/api'
 function Register(){
 
   const history = useHistory()
+  const [message, setMessage] = React.useState(false)
 
   const { formdata, handleChange, setErrors } = useForm({
     username: '',
@@ -60,9 +61,6 @@ function Register(){
     }
   }
 
-
- 
- 
 
   return (
     <div className="container">
@@ -176,7 +174,13 @@ function Register(){
                   name="postcode"
                   value={postCodeData.postcode}
                   onChange={handlePostCodeChange}
+                  className="tooltipped" data-position="botton" data-tooltip="Hello"
                 />
+                <p 
+                  onMouseEnter={() => setMessage(true)}
+                  onMouseLeave={() => setMessage(false)}
+                  className="register-form-address-message"
+                >Why?</p>
               
               </Col>
               <Col s={6} m={6} l={6}>
@@ -188,7 +192,11 @@ function Register(){
                   className="blue lighten 2 form-submit-button">
               Search
                 </Button>
-               
+                {message &&
+                  <p className="register-form-address-message">
+                    We take your post code so we can add you to our user map. So you can see where all the other Qui Est-ce users are based around the world.
+                  </p>
+                }
               </Col>
             </Row>
             <Row>

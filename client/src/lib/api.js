@@ -11,6 +11,9 @@ export function registerUser(formdata){
   return axios.post(`${baseUrl}/register`, formdata)
 }
 
+// //*Logs a user in
+// export function logInUser
+
 
 //*Find an address
 export function getUserAddress(postCode){
