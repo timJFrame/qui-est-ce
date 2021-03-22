@@ -2,6 +2,8 @@ import axios from 'axios'
 
 const baseUrl = '/api'
 
+const mapBoxKey = process.env.REACT_APP_MAPBOX_KEY
+console.log(mapBoxKey)
 
 
 //*Regsiter a user
@@ -12,5 +14,5 @@ export function registerUser(formdata){
 
 //*Find an address
 export function getUserAddress(postCode){
-  return axios.get(`https://eu1.locationiq.com/v1/search.php?key=pk.6f8beca7da4e6268d5ee50dbf4a122e7&postalcode=${postCode}f&country&country=england&format=json`)
+  return axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/postcode=${postCode}.json?access_token=${mapBoxKey}`)
 }

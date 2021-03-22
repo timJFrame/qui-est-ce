@@ -9,25 +9,27 @@ function Register(){
 
   const history = useHistory()
 
-  const [lat, setLat] = React.useState('')
-  const [lon, setLon] = React.useState('')
-
   const { formdata, handleChange, setErrors } = useForm({
     username: '',
     email: '',
     password: '',
     passwordConfirmation: '',
     experience: '',
-    latitude: lat,
-    longitude: lon,
     profilePhoto: ''
   })
+
+  const [location, setLocation] = React.useState({
+    latitude: '',
+    longitude: ''
+  })
+
+  const allFormDetails = { ...location, ...formdata }
 
   const handleFormSubmit = async e => {
     e.preventDefault()
     try {
-      console.log(formdata)
-      await registerUser(formdata)
+      console.log(allFormDetails)
+      await registerUser(allFormDetails)
       history.push('/')
     } catch (err){
       console.log(err.response.data.errors)
@@ -48,17 +50,19 @@ function Register(){
     e.preventDefault()
     try {
       const { data } = await getUserAddress(postCodeData.postcode)
-      setPostCodeData({ postcode: 'Address Found!!' })
-      // setFormData({ latitude: data[0].lat, longitude: data[0].lon })
-      setLon(data[0].lat)
-      setLat(data[0].lon)
+      console.log(data.features[0])
+      setPostCodeData({ postcode: `Great your based in ${data.features[0].context[1].text}` })
+      setLocation({ latitude: data.features[0].geometry.coordinates[1], longitude: data.features[0].geometry.coordinates[0] })
+     
       console.log()
     } catch (err){
       console.log(err)
     }
   }
 
-  console.log(formdata)
+
+ 
+ 
 
   return (
     <div className="container">
@@ -148,7 +152,7 @@ function Register(){
                     disabled
                     value=""
                   >
-    What is your speaking level
+    What is your speaking level in French
                   </option>
                   <option>
     Beginner
@@ -167,7 +171,7 @@ function Register(){
               <Col s={6} m={6} l={6}>
                 <TextInput
                   id="TextInput-4"
-                  label="Find Location"
+                  label="Please enter your post code"
                   noLayout
                   name="postcode"
                   value={postCodeData.postcode}
