@@ -14,7 +14,6 @@ async function registerUser(req, res, next){
 
 async function loginUser( req, res, next){
   try {
-
     //*Finds user in db via email provided by user logging in
     //*Find email or password provided bu user logging in is invalid throw error
     const userToLogin = await User.findOne({ email: req.body.email })
@@ -27,17 +26,10 @@ async function loginUser( req, res, next){
 
     //*Returns tokem in response
     return res.status(202).json({ nessage: `Welcome back ${userToLogin.username}`, token })
-
   } catch (err){
     next(err)
   }
 }
-
-
-
-
-
-
 
 export default {
   registerUser,

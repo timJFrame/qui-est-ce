@@ -11,9 +11,18 @@ export function registerUser(formdata){
   return axios.post(`${baseUrl}/register`, formdata)
 }
 
-// //*Logs a user in
-// export function logInUser
+//*Logs a user in
+export function loginUser(formdata){
+  return axios.post(`${baseUrl}/login`, formdata)
+}
 
+//*Get current users profile
+export function getCurrentUserProfile(){
+  return axios.get(`${baseUrl}/profile`)
+}
+
+
+//*MAP BOX API
 
 //*Find an address
 export function getUserAddress(postCode){

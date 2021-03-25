@@ -10,7 +10,7 @@ function Register(){
   const history = useHistory()
   const [message, setMessage] = React.useState(false)
 
-  const { formdata, handleChange, setErrors } = useForm({
+  const { formdata, handleChange, setErrors, errors } = useForm({
     username: '',
     email: '',
     password: '',
@@ -31,7 +31,7 @@ function Register(){
     try {
       console.log(allFormDetails)
       await registerUser(allFormDetails)
-      history.push('/')
+      history.push('/login')
     } catch (err){
       console.log(err.response.data.errors)
       setErrors(err.response.data.errors)
@@ -78,6 +78,9 @@ function Register(){
                   onChange={handleChange}
                 />
               </Col>
+              {
+                errors.username && <p className="error-message">Please enter a username</p>
+              }
             </Row>
             <Row>
               <Col s={12} m={12} l={12}>
@@ -90,6 +93,9 @@ function Register(){
                   onChange={handleChange}
                 />
               </Col>
+              {
+                errors.email && <p className="error-message">Please enter a valid email</p>
+              }
             </Row>
             <Row>
               <Col s={12} m={12} l={12}>
@@ -103,6 +109,9 @@ function Register(){
                   onChange={handleChange}
                 />
               </Col>
+              {
+                errors.password && <p className="error-message">Please enter a password</p>
+              }
             </Row>
             <Row>
               <Col s={12} m={12} l={12}>
@@ -116,6 +125,9 @@ function Register(){
                   onChange={handleChange}
                 />
               </Col>
+              {
+                errors.passwordConfirmation && <p className="error-message">Please enter a password confirmation</p>
+              }
             </Row>
 
             <Row>
@@ -163,6 +175,9 @@ function Register(){
                   </option>
                 </Select>
               </Col>
+              {
+                errors.experience && <p className="error-message">Please choose an experience level</p>
+              }
             </Row>
 
             <Row>
@@ -208,6 +223,9 @@ function Register(){
                   name="profilePhoto"
                 />
               </Col>
+              {
+                errors.profilePhoto && <p className="error-message">Please select a profile photo</p>
+              }
             </Row>
             <Button
               node="button"

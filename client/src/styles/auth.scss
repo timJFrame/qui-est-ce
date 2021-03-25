@@ -11,3 +11,40 @@
 .register-form-address-message{
     color: lightgray;
 }
+
+
+
+@keyframes fontbulger{
+    0%{
+        font-size: 18px;
+    }
+    25%{
+        font-size: 20px;
+    }
+    50%{
+        font-size: 22px;
+    }
+    75%{
+        font-size: 20px;
+    }
+    100%{
+        font-size: 18px;
+    }
+}
+
+
+
+.error-message{
+    color: red;
+    text-align: center;
+    animation: fontbulger 0.5s;
+}
+
+.fullscreen-nav-styling{
+    display: flex;
+}
+
+.mobile-nav-styling{
+    display: flex;
+    flex-direction: column;
+}
