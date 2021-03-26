@@ -1,9 +1,14 @@
 import axios from 'axios'
+import { getToken } from './auth'
+
+function headers(){
+  return {
+    headers: { Authorization: `Bearer ${getToken()}` }
+  }
+}
 
 const baseUrl = '/api'
-
 const mapBoxKey = process.env.REACT_APP_MAPBOX_KEY
-console.log(mapBoxKey)
 
 
 //*Regsiter a user
@@ -18,7 +23,7 @@ export function loginUser(formdata){
 
 //*Get current users profile
 export function getCurrentUserProfile(){
-  return axios.get(`${baseUrl}/profile`)
+  return axios.get(`${baseUrl}/profile`, headers() )
 }
 
 

@@ -19,13 +19,13 @@ function Login(){
     try {
       const { data } = await loginUser(formdata)
       setToken(data.token)
-      history.push('/register')
+      history.push('/profile')
     } catch (err){
       setError(true)
     }
   }
 
-  const handleErrorMessage = () => setError(true)
+
 
   return (
     <div className="container">
@@ -43,7 +43,6 @@ function Login(){
                   name="email"
                   value={formdata.email}
                   onChange={handleChange}
-                  onFocus={handleErrorMessage}
                   className={error ? 'login-error-handler' : ''}
                 />
               </Col>
@@ -60,9 +59,7 @@ function Login(){
                   password
                   name="password"
                   vaule={formdata.password}
-                  onChange={handleChange}
-                  onFocus={handleErrorMessage}
-                
+                  onChange={handleChange}                
                 />
               </Col>
             </Row>

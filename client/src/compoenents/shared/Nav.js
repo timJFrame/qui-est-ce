@@ -51,7 +51,7 @@ function Nav(){
       className="white lighten-2 z-depth-0 ">
       {!isLoggedIn ?
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', margin: '30px', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap',  justifyContent: 'center' }}>
           <Link className="nav-item" to="/register" >
             <Button
               waves="light"
@@ -72,15 +72,28 @@ function Nav(){
         </div>
         
         :
-        <Link className="nav-item" to="" >
-          <Button
-            waves="light"
-            className="red lighten 2"
-            onClick={handleLogOut}
-          >
+        <div style={{ display: 'flex', flexWrap: 'wrap',  justifyContent: 'center' }}>
+         
+          <Link className="nav-item" to="/profile" >
+            <Button
+              waves="light"
+              className="blue lighten 2"
+            >
+          My Profile
+            </Button>
+          </Link>
+
+          <Link className="nav-item" to="" >
+            <Button
+              waves="light"
+              className="red lighten 2"
+              onClick={handleLogOut}
+            >
           Logout
-          </Button>
-        </Link>
+            </Button>
+          </Link>
+
+        </div>
       }
       
     </Navbar>
