@@ -8,6 +8,7 @@ const personCardSchema = new mongoose.Schema({
   glasses: { type: Boolean, required: true },
   moustache: { type: Boolean, required: true },
   beard: { type: Boolean, required: true },
+  image: { type: String, required: true }, 
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
 })
   

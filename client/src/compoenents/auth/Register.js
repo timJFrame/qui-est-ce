@@ -29,7 +29,6 @@ function Register(){
   const handleFormSubmit = async e => {
     e.preventDefault()
     try {
-      console.log(allFormDetails)
       await registerUser(allFormDetails)
       history.push('/login')
     } catch (err){
@@ -51,7 +50,6 @@ function Register(){
     e.preventDefault()
     try {
       const { data } = await getUserAddress(postCodeData.postcode)
-      console.log(data.features[0])
       setPostCodeData({ postcode: `Great your based in ${data.features[0].context[1].text}` })
       setLocation({ latitude: data.features[0].geometry.coordinates[1], longitude: data.features[0].geometry.coordinates[0] })
      

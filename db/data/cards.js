@@ -3,9 +3,10 @@ export default [{
   gender: 'homme',
   eyeColor: 'vert',
   hairColor: 'blond',
-  glasses: true,
+  glasses: false,
   moustache: true,
   beard: false,
+  image: 'https://i.imgur.com/F3f2wy7.png',
 },
 {
   name: 'Aurelie',
@@ -15,15 +16,17 @@ export default [{
   glasses: false,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/TtBl3Zn.png',
 },
 {
   name: 'Louis',
   gender: 'Homme',
-  eyeColor: 'bruns',
-  hairColor: 'bleu',
+  eyeColor: 'bleu',
+  hairColor: 'bruns',
   glasses: false,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/yMIBtBi.png',
 },
 {
   name: 'Delphine',
@@ -33,6 +36,7 @@ export default [{
   glasses: true,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/Q23AxZf.png',
 },
 {
   name: 'Claude',
@@ -42,6 +46,7 @@ export default [{
   glasses: false,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/1p1SnYi.png',
 },
 {
   name: 'Guillaume',
@@ -51,6 +56,7 @@ export default [{
   glasses: false,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/xmVoHr5.png',
 },
 {
   name: 'Julie',
@@ -60,24 +66,27 @@ export default [{
   glasses: true,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/K3hHnLT.png',
 },
 {
   name: 'Antoine',
   gender: 'homme',
   eyeColor: 'bleu',
   hairColor: 'blond',
-  glasses: true,
+  glasses: false,
   moustache: false,
   beard: true,
+  image: 'https://i.imgur.com/bc2x1TP.png',
 },
 {
   name: 'Claire',
-  gender: 'fenne',
+  gender: 'femme',
   eyeColor: 'bleu',
   hairColor: 'roux',
-  glasses: true,
+  glasses: false,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/kOvOeXu.png',
 },
 {
   name: 'Henri',
@@ -87,6 +96,7 @@ export default [{
   glasses: false,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/1Zb8ks2.png',
 },
 {
   name: 'Fanny',
@@ -96,6 +106,7 @@ export default [{
   glasses: false,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/d3CNJ2P.png',
 },
 {
   name: 'Jean',
@@ -105,6 +116,7 @@ export default [{
   glasses: false,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/kf7GurA.png',
 },
 {
   name: 'Aude',
@@ -114,6 +126,7 @@ export default [{
   glasses: false,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/kf7GurA.png',
 },
 {
   name: 'Laurent',
@@ -121,8 +134,9 @@ export default [{
   eyeColor: 'vert',
   hairColor: 'roux',
   glasses: true,
-  moustache: true,
+  moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/I248uTZ.png',
 },
 {
   name: 'Ambe',
@@ -132,5 +146,6 @@ export default [{
   glasses: true,
   moustache: false,
   beard: false,
+  image: 'https://i.imgur.com/5fjlkmM.png',
 }
 ]

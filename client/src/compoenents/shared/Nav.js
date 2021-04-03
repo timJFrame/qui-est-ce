@@ -73,7 +73,16 @@ function Nav(){
         
         :
         <div style={{ display: 'flex', flexWrap: 'wrap',  justifyContent: 'center' }}>
-         
+        
+          <Link className="nav-item" to="/game" >
+            <Button
+              waves="light"
+              className="blue lighten 2"
+            >
+          Play Game
+            </Button>
+          </Link>
+
           <Link className="nav-item" to="/profile" >
             <Button
               waves="light"

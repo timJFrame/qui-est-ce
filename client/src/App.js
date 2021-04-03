@@ -6,6 +6,7 @@ import Home from './compoenents/shared/Home'
 import Register from './compoenents/auth/Register'
 import Login from './compoenents/auth/Login'
 import UserProfile from './compoenents/user/UserProfile'
+import cardIndex from './compoenents/cards/CardIndex'
 
 
 function App(){
@@ -18,6 +19,7 @@ function App(){
           <Route path="/register" component={Register}/>
           <Route path="/login" component={Login}/>
           <Route path="/profile" component={UserProfile}/>
+          <Route path="/game" component={cardIndex}/>
         </Switch>
       </BrowserRouter>
     </>

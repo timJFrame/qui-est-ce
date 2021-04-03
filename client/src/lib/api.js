@@ -26,10 +26,18 @@ export function getCurrentUserProfile(){
   return axios.get(`${baseUrl}/profile`, headers() )
 }
 
+//*Get all cards
+export function getAllCards(){
+  return axios.get(`${baseUrl}/cards`)
+}
 
 //*MAP BOX API
 
 //*Find an address
 export function getUserAddress(postCode){
   return axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/postcode=${postCode}.json?access_token=${mapBoxKey}`)
+}
+
+export function findReverseAddy(latitude, longitude ){
+  return axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/postcode=${longitude},${latitude}.json?access_token=${mapBoxKey}`)
 }

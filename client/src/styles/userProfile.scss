@@ -1,0 +1,42 @@
+
+.loading-spinner-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.user-profile-page-container{
+    margin:25px;
+//    display: flex;
+//    flex-wrap: wrap;
+}
+
+.user-container{
+    display: flex;
+    flex-direction: column;
+    // padding: 100px;
+    padding-top: 100px;
+    height: 70vh;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    margin: 25px;
+}
+
+.user-details-container{
+    align-items: center;
+    h3{
+        margin: 0;
+    }
+    p{
+        margin: 5px;
+        color: grey;
+    }
+}
+
+.user-profile-photo{
+margin: 10px;
+max-width: 30%;
+padding:20px;
+border-radius: 50%;
+align-self: center;
+}
