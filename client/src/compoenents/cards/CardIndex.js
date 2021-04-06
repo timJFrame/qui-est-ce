@@ -7,8 +7,16 @@ import Card from './Card'
 function CardIndex(){
 
   const [cards, setCards] = React.useState(null)
-  const [randomCard, setRandomCard] = React.useState(null)
-  let selectedCard 
+  const [computerChoice, setComputerChoice] = React.useState(null)
+
+  const [genderAnswer, setGenderAnswer] = React.useState(null)
+
+  let randomCard
+  let playerGenderChoice
+  let genderChoiceAnswer
+
+
+ 
 
   React.useEffect(() => {
     const getData = async() => {
@@ -22,17 +30,36 @@ function CardIndex(){
     }
     getData()
   }, [])
+  
 
-  const randomNumberGenerator = () => {
-    return Math.floor(Math.random() * cards.length)
+
+  const computerChoiceGen = () => {
+    const randomNumber = Math.floor(Math.random() * cards.length)
+    randomCard = cards[randomNumber]
+
+  
   }
 
-  const handleSelectingRandomCard = () => {
-    selectedCard = cards[randomNumberGenerator()]
-    setRandomCard(selectedCard)
-    console.log(randomCard)
+  const handleGenderAnswer = () => {
+    if (playerGenderChoice === randomCard.gender){
+      genderChoiceAnswer = `Oui je suis ${ playerGenderChoice === 'homme' ? 'un' : 'une' } ${playerGenderChoice}`
+    } else {
+      genderChoiceAnswer = `Non, Je ne suis pa ${playerGenderChoice === 'homme' ? 'un' : 'une'} ${playerGenderChoice}`
+    }
   }
- 
+
+  const handleGenderChoice = (e) => {
+    playerGenderChoice = e.target.innerHTML.toLowerCase()
+    computerChoiceGen()
+    setComputerChoice(randomCard)
+    handleGenderAnswer()
+    setGenderAnswer(genderChoiceAnswer)
+    console.log(computerChoice)
+  }
+
+  
+
+
 
 
   return (cards ?
@@ -44,13 +71,27 @@ function CardIndex(){
           />
         ))}
       </Row>
-      <Button
-        onClick={handleSelectingRandomCard}
-        node="button"
-        waves="light"
-        className="blue lighten 2"
-      >Play Game</Button>
+      
+
+      {!genderAnswer &&
+      <div className="gender-question-div">
+        <h5>Are you a un:</h5>
+        <Button onClick={handleGenderChoice}>Homme</Button>
+        <h5>ou une </h5>
+        <Button onClick={handleGenderChoice}>Femme</Button>
+      </div>
+      }
+      {genderAnswer &&
+      <div className="gender-answer-div">
+        <h5>{genderAnswer}</h5>
+      </div>
+      }
+      
+
+     
+
     </div>
+      
     :
     <div className="container loading-spinner-container">
       <Loader

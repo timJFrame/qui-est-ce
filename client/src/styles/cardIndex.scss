@@ -25,3 +25,16 @@
 .card-image{
     max-width: 70%;
 }
+
+.gender-question-div{
+    display: flex;
+    justify-content: center;
+    h5{
+        margin: 0 5px;
+    }
+}
+
+.gender-answer-div{
+    display: flex;
+    justify-content: center;
+}
