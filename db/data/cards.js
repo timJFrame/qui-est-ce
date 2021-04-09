@@ -1,7 +1,7 @@
 export default [{
   name: 'Gabriel',
   gender: 'homme',
-  eyeColor: 'vert',
+  eyeColor: 'verts',
   hairColor: 'blonds',
   glasses: false,
   moustache: true,
@@ -11,7 +11,7 @@ export default [{
 {
   name: 'Aurelie',
   gender: 'femme',
-  eyeColor: 'bleu',
+  eyeColor: 'bleus',
   hairColor: 'noirs',
   glasses: false,
   moustache: false,
@@ -21,7 +21,7 @@ export default [{
 {
   name: 'Louis',
   gender: 'homme',
-  eyeColor: 'bleu',
+  eyeColor: 'bleus',
   hairColor: 'bruns',
   glasses: false,
   moustache: false,
@@ -71,7 +71,7 @@ export default [{
 {
   name: 'Antoine',
   gender: 'homme',
-  eyeColor: 'bleu',
+  eyeColor: 'bleus',
   hairColor: 'blonds',
   glasses: false,
   moustache: false,
@@ -81,7 +81,7 @@ export default [{
 {
   name: 'Claire',
   gender: 'femme',
-  eyeColor: 'bleu',
+  eyeColor: 'bleus',
   hairColor: 'roux',
   glasses: false,
   moustache: false,
@@ -91,7 +91,7 @@ export default [{
 {
   name: 'Henri',
   gender: 'homme',
-  eyeColor: 'vert',
+  eyeColor: 'verts',
   hairColor: 'bruns',
   glasses: false,
   moustache: false,
@@ -101,7 +101,7 @@ export default [{
 {
   name: 'Fanny',
   gender: 'femme',
-  eyeColor: 'vert',
+  eyeColor: 'verts',
   hairColor: 'noirs',
   glasses: false,
   moustache: false,
@@ -126,12 +126,12 @@ export default [{
   glasses: false,
   moustache: false,
   beard: false,
-  image: 'https://i.imgur.com/kf7GurA.png',
+  image: 'https://i.imgur.com/bOj0xtw.png',
 },
 {
   name: 'Laurent',
   gender: 'homme',
-  eyeColor: 'vert',
+  eyeColor: 'verts',
   hairColor: 'roux',
   glasses: true,
   moustache: false,
@@ -141,7 +141,7 @@ export default [{
 {
   name: 'Ambe',
   gender: 'femme',
-  eyeColor: 'bleu',
+  eyeColor: 'bleus',
   hairColor: 'blonds',
   glasses: true,
   moustache: false,
