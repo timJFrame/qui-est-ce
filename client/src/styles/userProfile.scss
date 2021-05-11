@@ -7,14 +7,11 @@
 
 .user-profile-page-container{
     margin:25px;
-//    display: flex;
-//    flex-wrap: wrap;
 }
 
 .user-container{
     display: flex;
     flex-direction: column;
-    // padding: 100px;
     padding-top: 100px;
     height: 70vh;
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
@@ -23,15 +20,22 @@
 }
 
 .user-details-container{
-    align-items: center;
+    display: flex;
     h3{
-        margin: 0;
+        margin: 0 0 30px 0;
+        align-self: center;
     }
+   
+}
+
+.user-sub-details{
+    align-self: start;
     p{
         margin: 5px;
-        color: grey;
+        
     }
 }
+
 
 .user-profile-photo{
 margin: 10px;

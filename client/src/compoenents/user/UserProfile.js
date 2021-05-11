@@ -6,8 +6,6 @@ import { getCurrentUserProfile } from '../../lib/api'
 function UserProfile(){
 
   const [userProfile, setUserProfile] = React.useState(null)
-  // const [userLocation, setUserLocation] = React.useState(null)
-  // const counter = 0
 
   React.useEffect(() => {
     const getData = async () => {
@@ -17,21 +15,9 @@ function UserProfile(){
     getData()
   }, [])
 
+  console.log(userProfile)
 
-
-  // if (userProfile && counter === 0){
-  //   console.log(userProfile.longitude, userProfile.latitude)
-  //   const getData = async () => {
-  //     counter++
-  //     const { data } = await findReverseAddy(userProfile.longitude, userProfile.latitude)
-  //     setUserLocation(data)
-  //     console.log(data)
-  //   }
-  //   getData()
-  // }
-
-
-
+  
   return (userProfile ?
     <Row className="user-profile-page-container">
       <Col s={1} m={1} l={1}></Col>
@@ -39,12 +25,15 @@ function UserProfile(){
         className="user-container user-details-container"
       >
         <img src={userProfile.profilePhoto} alt={userProfile.username} className="user-profile-photo"/>
+
         <h3>{userProfile.username}</h3>
-        <p>{userProfile.email}</p>
-        <p>{userProfile.experience[0].toUpperCase()}{userProfile.experience.slice(1)} Speaking Level</p>
-        {/* {userLocation &&
-          <p>{userLocation.features[0].context[1].text}, {userLocation.features[0].context[3].text}</p>
-        } */}
+        
+        <div className="user-sub-details">
+          <p><strong>Email:</strong> {` ${userProfile.email}`}</p>
+          <p><strong>Speaking Level:</strong> {` ${userProfile.experience[0].toUpperCase()}${userProfile.experience.slice(1)}`}</p>
+          <p><strong>Longitude:</strong> {` ${userProfile.longitude}`}</p>
+          <p><strong>Latitude:</strong> {` ${userProfile.latitude}`}</p>
+        </div>
       </Col>
       
       <Col s={12} m={5} l={5}

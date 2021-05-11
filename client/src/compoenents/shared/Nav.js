@@ -83,6 +83,15 @@ function Nav(){
             </Button>
           </Link>
 
+          <Link className="nav-item" to="/create-card" >
+            <Button
+              waves="light"
+              className="blue lighten 2"
+            >
+          Create a card
+            </Button>
+          </Link>
+
           <Link className="nav-item" to="/profile" >
             <Button
               waves="light"
