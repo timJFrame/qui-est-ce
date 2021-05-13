@@ -1,25 +1,24 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { Row, Col, TextInput, Select } from 'react-materialize'
+import { Row, Col, TextInput, Select, Checkbox } from 'react-materialize'
 import useForm from '../../utils/useform'
 import cardImages from './cardImageData'
 
 
 
 
-//*Femme
-import femmebleus from '../../images/femme/femmebleus.png'
-import femmeverts from '../../images/femme/femmeverts.png'
-import femmemarron from '../../images/femme/femmemarron.png'
-import femmegris from   '../../images/femme/femmegris.png'
-import cardImageData from './cardImageData'
+
 
 
 function CreateCard(){
 
+  let imageString
+
   const [gender, setGender] = React.useState('')
   const [eyeColor, setEyeColor] = React.useState('')
+  const [hairColor, setHairColor] = React.useState('')
   const [image, setImage] = React.useState()
+
 
 
 
@@ -28,24 +27,29 @@ function CreateCard(){
     gender: '',
     eyeColor: '',
     hairColor: '',
-    glasses: '',
+    glasses: false,
     moustache: '',
     beard: '',
     image: ''
   })
 
   const handleGender = (e) => {
-    setGender(e.target.value)
+    const genderString = e.target.value
+    console.log(genderString)
+    setGender(genderString)
+    
   }
 
- 
+  const handleChangeAndGender = (e) => {
+    handleGender(e)
+    handleChange(e)
+  }
   
-
   const handleEyeColor = (e) => {
     const eyeColorString = e.target.value
     setEyeColor(eyeColorString)
-    let imageString
-    cardImageData.forEach(image => {
+    
+    cardImages.forEach(image => {
       if (image[`${gender}${eyeColorString}`]){
         imageString = image[`${gender}${eyeColorString}`]
       }
@@ -53,8 +57,55 @@ function CreateCard(){
     setImage(imageString)
   }
 
+  const handleChangeAndEyeColor = (e) => {
+    handleChange(e)
+    handleEyeColor(e)
+  }
 
+
+
+
+  const handleHairColor = (e) => {
+    const hairColorString = e.target.value
+    setHairColor(hairColorString)
+    
+    cardImages.forEach(image =>{
+      if (image[`${gender}${eyeColor}${hairColorString}`]){
+        imageString = image[`${gender}${eyeColor}${hairColorString}`]
+      }
+    })
+    setImage(imageString)
+  }
+
+  const handleChangeAndHairColor = (e) => {
+    handleChange(e)
+    handleHairColor(e)
+  }
+
+  const handleGlasses = () => {
+    if (!formdata.glasses){
+      cardImages.forEach(image => {
+        if (image[`${gender}${eyeColor}${hairColor}wg`]){
+          imageString = image[`${gender}${eyeColor}${hairColor}wg`]
+        }
+      })
+    
+    } else {
+      cardImages.forEach(image => {
+        if (image[`${gender}${eyeColor}${hairColor}wg`]){
+          imageString = image[`${gender}${eyeColor}${hairColor}`]
+        }
+      })
+    }
+    setImage(imageString)
+  }
  
+  const handleChangeAndGlasses = (e) => {
+    handleChange(e)
+    handleGlasses()
+  }
+
+  console.log(formdata)
 
   return (
     <div className="container">
@@ -75,7 +126,7 @@ function CreateCard(){
             </Row>
 
             <Row>
-              <Col s={12} m={12} l={12}>
+              <Col s={12} m={4} l={4}>
                 <Select
                   noLayout
                   id="Select-9"
@@ -83,7 +134,7 @@ function CreateCard(){
                   name="gender"
                   value={formdata.gender}
                   label ="Choose Gender"
-                  onChange={function noRefCheck(){}, handleChange, handleGender}
+                  onChange={handleChangeAndGender}
                   options={{
                     classes: '',
                     dropdownOptions: {
@@ -118,11 +169,11 @@ function CreateCard(){
                   </option>
                 </Select>
               </Col>
-            </Row>
+            
 
-            {gender &&
-            <Row>
-              <Col s={12} m={12} l={12}>
+              {gender &&
+           
+              <Col s={12} m={4} l={4}>
                 <Select
                   noLayout
                   id="Select-9"
@@ -130,7 +181,7 @@ function CreateCard(){
                   name="eyeColor"
                   value={formdata.eyeColor}
                   label ="Choose Eye Color"
-                  onChange={function noRefCheck(){}, handleChange, handleEyeColor}
+                  onChange={function noRefCheck(){}, handleChangeAndEyeColor}
                   options={{
                     classes: '',
                     dropdownOptions: {
@@ -170,8 +221,91 @@ function CreateCard(){
                   </option>
                 </Select>
               </Col>
+              }
+              { eyeColor &&
+              <Col s={12} m={4} l={4}>
+                <Select
+                  noLayout
+                  id="Select-9"
+                  multiple={false}
+                  name="hairColor"
+                  value={formdata.hairColor}
+                  label ="Choose Hair Color"
+                  onChange={function noRefCheck(){}, handleChangeAndHairColor}
+                  options={{
+                    classes: '',
+                    dropdownOptions: {
+                      alignment: 'left',
+                      autoTrigger: true,
+                      closeOnClick: true,
+                      constrainWidth: true,
+                      coverTrigger: true,
+                      hover: false,
+                      inDuration: 150,
+                      onCloseEnd: null,
+                      onCloseStart: null,
+                      onOpenEnd: null,
+                      onOpenStart: null,
+                      outDuration: 250
+                    }
+                  }}
+                  
+                >
+                  <option
+                    disabled
+                    value=""
+                  >
+                     Choose Hair Color
+                  </option>
+                  <option>
+                      blonds
+                  </option>
+                  <option>
+                     bruns
+                  </option>
+                  <option>
+                    noirs
+                  </option>
+                  <option>
+                     roux
+                  </option>
+                </Select>
+              </Col>
+              }
             </Row>
-            }
+        
+            <Row>
+              
+              { hairColor &&
+              <Col s={12} m={4} l={4}>
+                <Checkbox
+                  id="Checkbox_3"
+                  name="glasses"
+                  label="Glasses?"
+                  value={formdata.glasses}
+                  onChange={handleChangeAndGlasses}
+                  checked={formdata.glasses}
+                />
+              </Col>
+              }
+
+              { gender === 'homme' &&
+              <Col s={12} m={4} l={4}>
+                <Checkbox
+                  id="Checkbox_3"
+                  name="moustache"
+                  label="Moustache?"
+                  value={formdata.moustache}
+                  onChange={handleChange}
+                  checked={formdata.moustache}
+                />
+              </Col>
+              }
+
+            </Row>
+
+
+
 
           </Col>
         </Row>
