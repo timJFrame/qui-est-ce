@@ -1,19 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { Row, Col, TextInput, Select, Checkbox } from 'react-materialize'
+import { Row, Col, TextInput, Select, Checkbox, Button } from 'react-materialize'
 import useForm from '../../utils/useform'
 import cardImages from './cardImageData'
-
-
-
-
-
 
 
 function CreateCard(){
 
   let imageString
-
   const [gender, setGender] = React.useState('')
   const [eyeColor, setEyeColor] = React.useState('')
   const [hairColor, setHairColor] = React.useState('')
@@ -28,8 +22,8 @@ function CreateCard(){
     eyeColor: '',
     hairColor: '',
     glasses: false,
-    moustache: '',
-    beard: '',
+    moustache: false,
+    beard: false,
     image: ''
   })
 
@@ -47,6 +41,7 @@ function CreateCard(){
   
   const handleEyeColor = (e) => {
     const eyeColorString = e.target.value
+    console.log(eyeColorString)
     setEyeColor(eyeColorString)
     
     cardImages.forEach(image => {
@@ -92,7 +87,7 @@ function CreateCard(){
     
     } else {
       cardImages.forEach(image => {
-        if (image[`${gender}${eyeColor}${hairColor}wg`]){
+        if (image[`${gender}${eyeColor}${hairColor}`]){
           imageString = image[`${gender}${eyeColor}${hairColor}`]
         }
       })
@@ -103,6 +98,52 @@ function CreateCard(){
   const handleChangeAndGlasses = (e) => {
     handleChange(e)
     handleGlasses()
+  }
+
+  const handleMoustache = () => {
+    if (!formdata.moustache){
+      cardImages.forEach(image => {
+        if (image[`${gender}${eyeColor}${hairColor}wm`]){
+          imageString = image[`${gender}${eyeColor}${hairColor}wm`]
+        }
+      })
+    
+    } else {
+      cardImages.forEach(image => {
+        if (image[`${gender}${eyeColor}${hairColor}`]){
+          imageString = image[`${gender}${eyeColor}${hairColor}`]
+        }
+      })
+    }
+    setImage(imageString)
+  }
+
+  const handleChangeAndMoustache = (e) => {
+    handleChange(e)
+    handleMoustache()
+  }
+
+  const handleBeard = () => {
+    if (!formdata.beard){
+      cardImages.forEach(image => {
+        if (image[`${gender}${eyeColor}${hairColor}wb`]){
+          imageString = image[`${gender}${eyeColor}${hairColor}wb`]
+        }
+      })
+    
+    } else {
+      cardImages.forEach(image => {
+        if (image[`${gender}${eyeColor}${hairColor}`]){
+          imageString = image[`${gender}${eyeColor}${hairColor}`]
+        }
+      })
+    }
+    setImage(imageString)
+  }
+
+  const handleChangeAndBeard = (e) => {
+    handleChange(e)
+    handleBeard()
   }
 
   console.log(formdata)
@@ -275,7 +316,7 @@ function CreateCard(){
             </Row>
         
             <Row>
-              
+
               { hairColor &&
               <Col s={12} m={4} l={4}>
                 <Checkbox
@@ -288,21 +329,38 @@ function CreateCard(){
                 />
               </Col>
               }
-
+        
               { gender === 'homme' &&
-              <Col s={12} m={4} l={4}>
-                <Checkbox
-                  id="Checkbox_3"
-                  name="moustache"
-                  label="Moustache?"
-                  value={formdata.moustache}
-                  onChange={handleChange}
-                  checked={formdata.moustache}
-                />
-              </Col>
-              }
+              <>
+              
+                <Col s={12} m={4} l={4}>
+                  <Checkbox
+                    id="Checkbox_4"
+                    name="moustache"
+                    label="Moustache?"
+                    value={formdata.moustache}
+                    onChange={handleChangeAndMoustache}
+                    checked={formdata.moustache}
+                  />
+                </Col>
+                
 
+             
+                <Col s={12} m={4} l={4}>
+                  <Checkbox
+                    id="Checkbox_5"
+                    name="beard"
+                    label="Beard?"
+                    value={formdata.beard}
+                    onChange={handleChangeAndBeard}
+                    checked={formdata.beard}
+                  />
+                </Col>
+                
+              </>
+              }
             </Row>
+            
 
 
 
@@ -310,12 +368,22 @@ function CreateCard(){
           </Col>
         </Row>
         {image &&
-        <div className="create-card-image-container">
-          <img src={image} alt="creating-card"/>
-         
+        <div className="create-card-continer">
+          <div className="create-card">
+            <img src={image} alt="creating-card" className="create-card-image"/>
+          </div>
         </div>
         }
       </form>
+      <div className="card-submit-button">
+        <Button
+          type="submit"
+          waves="orange"
+          
+        >
+          Create Card
+        </Button>
+      </div>
     </div>
   )
 }

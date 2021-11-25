@@ -31,6 +31,12 @@ export function getAllCards(){
   return axios.get(`${baseUrl}/cards`)
 }
 
+//* Post Card
+export function postCard(formdata){
+  return axios.post(`${baseUrl}/cards`, formdata, headers())
+}
+
+
 //*MAP BOX API
 
 //*Find an address

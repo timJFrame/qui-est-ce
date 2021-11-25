@@ -1,0 +1,23 @@
+.create-card-continer{
+    display: flex;
+    justify-content: center;
+}
+
+.create-card{
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    height: 240px;
+    max-width: 200px;
+    border-radius: 10px;
+     margin: 10px;
+}
+
+
+.create-card-image{
+    width: 100%;
+}
+
+.card-submit-button{
+    display: flex;
+  
+    justify-content: center;
+}

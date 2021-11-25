@@ -20,6 +20,7 @@ import hommegrisbruns from '../../images/homme/hommegrisbruns.png'
 import hommegrisnoirs from '../../images/homme/hommegrisnoirs.png'
 import hommegrisroux from '../../images/homme/hommegrisroux.png'
 
+//*With Glasses
 import hommebleusblondswg from '../../images/homme/hommebleusblondswg.png'
 import hommebleusnoirswg from '../../images/homme/hommebleusnoirswg.png'
 import hommebleusbrunswg from '../../images/homme/hommebleusbrunswg.png'
@@ -37,6 +38,40 @@ import hommegrisbrunswg from '../../images/homme/hommegrisbrunswg.png'
 import hommegrisnoirswg from '../../images/homme/hommegrisnoirswg.png'
 import hommegrisrouxwg from '../../images/homme/hommegrisrouxwg.png'
 
+//*With Moustache
+import hommebleusblondswm from '../../images/homme/hommebleusblondswm.png'
+import hommebleusnoirswm from '../../images/homme/hommebleusnoirswm.png'
+import hommebleusbrunswm from '../../images/homme/hommebleusbrunswm.png'
+import hommebleusrouxwm from '../../images/homme/hommebleusrouxwm.png'
+import hommevertsblondswm from '../../images/homme/hommevertsblondswm.png'
+import hommevertsbrunswm from '../../images/homme/hommevertsbrunswm.png'
+import hommevertsnoirswm from '../../images/homme/hommevertsnoirswm.png'
+import hommevertsrouxwm from '../../images/homme/hommevertsrouxwm.png'
+import hommemarronblondswm from '../../images/homme/hommemarronblondswm.png'
+import hommemarronbrunswm from '../../images/homme/hommemarronbrunswm.png'
+import hommemarronnoirswm from '../../images/homme/hommemarronnoirswm.png'
+import hommemarronrouxwm from '../../images/homme/hommemarronrouxwm.png'
+import hommegrisblondswm from '../../images/homme/hommegrisblondswm.png'
+import hommegrisbrunswm from '../../images/homme/hommegrisbrunswm.png'
+import hommegrisnoirswm from '../../images/homme/hommegrisnoirswm.png'
+import hommegrisrouxwm from '../../images/homme/hommegrisrouxwm.png'
+
+import hommebleusblondswb from '../../images/homme/hommebleusblondswb.png'
+import hommebleusnoirswb from '../../images/homme/hommebleusnoirswb.png'
+import hommebleusbrunswb from '../../images/homme/hommebleusbrunswb.png'
+import hommebleusrouxwb from '../../images/homme/hommebleusrouxwb.png'
+import hommevertsblondswb from '../../images/homme/hommevertsblondswb.png'
+import hommevertsbrunswb from '../../images/homme/hommevertsbrunswb.png'
+import hommevertsnoirswb from '../../images/homme/hommevertsnoirswb.png'
+import hommevertsrouxwb from '../../images/homme/hommevertsrouxwb.png'
+import hommemarronblondswb from '../../images/homme/hommemarronblondswb.png'
+import hommemarronbrunswb from '../../images/homme/hommemarronbrunswb.png'
+import hommemarronnoirswb from '../../images/homme/hommemarronnoirswb.png'
+import hommemarronrouxwb from '../../images/homme/hommemarronrouxwb.png'
+import hommegrisblondswb from '../../images/homme/hommegrisblondswb.png'
+import hommegrisbrunswb from '../../images/homme/hommegrisbrunswb.png'
+import hommegrisnoirswb from '../../images/homme/hommegrisnoirswb.png'
+import hommegrisrouxwb from '../../images/homme/hommegrisrouxwb.png'
 
 
 //*Femme
@@ -294,5 +329,106 @@ export default [
   },
   {
     'femmegrisrouxwg': femmegrisrouxwg
+  },
+
+
+  {
+    'hommebleusblondswm': hommebleusblondswm
+  },
+  {
+    'hommebleusnoirswm': hommebleusnoirswm
+  },
+  {
+    'hommebleusbrunswm': hommebleusbrunswm 
+  },
+  {
+    'hommebleusrouxwm': hommebleusrouxwm
+  },
+  {
+    'hommevertsblondswm': hommevertsblondswm
+  },
+  {
+    'hommevertsbrunswm': hommevertsbrunswm
+  },
+  {
+    'hommevertsnoirswm': hommevertsnoirswm
+  },
+  {
+    'hommevertsrouxwm': hommevertsrouxwm
+  },
+  {
+    'hommemarronblondswm': hommemarronblondswm
+  },
+  {
+    'hommemarronbrunswm': hommemarronbrunswm
+  },
+  {
+    'hommemarronnoirswm': hommemarronnoirswm  
+  },
+  {
+    'hommemarronrouxwm': hommemarronrouxwm
+  },
+  {
+    'hommegrisblondswm': hommegrisblondswm
+  },
+  {
+    'hommegrisbrunswm': hommegrisbrunswm
+  },
+  {
+    'hommegrisnoirswm': hommegrisnoirswm 
+  },
+  {
+    'hommegrisrouxwm': hommegrisrouxwm
+  },
+
+
+
+  {
+    'hommebleusblondswb': hommebleusblondswb
+  },
+  {
+    'hommebleusnoirswb': hommebleusnoirswb
+  },
+  {
+    'hommebleusbrunswb': hommebleusbrunswb 
+  },
+  {
+    'hommebleusrouxwb': hommebleusrouxwb
+  },
+  {
+    'hommevertsblondswb': hommevertsblondswb
+  },
+  {
+    'hommevertsbrunswb': hommevertsbrunswb
+  },
+  {
+    'hommevertsnoirswb': hommevertsnoirswb
+  },
+  {
+    'hommevertsrouxwb': hommevertsrouxwb
+  },
+  {
+    'hommemarronblondswb': hommemarronblondswb
+  },
+  {
+    'hommemarronbrunswb': hommemarronbrunswb
+  },
+  {
+    'hommemarronnoirswb': hommemarronnoirswb  
+  },
+  {
+    'hommemarronrouxwb': hommemarronrouxwb
+  },
+  {
+    'hommegrisblondswb': hommegrisblondswb
+  },
+  {
+    'hommegrisbrunswb': hommegrisbrunswb
+  },
+  {
+    'hommegrisnoirswb': hommegrisnoirswb 
+  },
+  {
+    'hommegrisrouxwb': hommegrisrouxwb
   }
 ]
