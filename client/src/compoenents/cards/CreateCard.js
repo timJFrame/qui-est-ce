@@ -3,6 +3,7 @@ import React from 'react'
 import { Row, Col, TextInput, Select, Checkbox, Button } from 'react-materialize'
 import useForm from '../../utils/useform'
 import cardImages from './cardImageData'
+import postCard from '../../lib/api'
 
 
 function CreateCard(){
@@ -27,6 +28,13 @@ function CreateCard(){
     image: ''
   })
 
+  //Handle submitting card to data base
+  const handleCardSubmit = async (e) => {
+    e.preventDefault()
+    console.log('yes')
+  }
+
+  //Sets gender into state
   const handleGender = (e) => {
     const genderString = e.target.value
     console.log(genderString)
@@ -34,11 +42,13 @@ function CreateCard(){
     
   }
 
+  //Gender handle change function
   const handleChangeAndGender = (e) => {
     handleGender(e)
     handleChange(e)
   }
   
+  //Sets Eye color into state and updates image
   const handleEyeColor = (e) => {
     const eyeColorString = e.target.value
     console.log(eyeColorString)
@@ -52,14 +62,13 @@ function CreateCard(){
     setImage(imageString)
   }
 
+  //Eye color handle change function
   const handleChangeAndEyeColor = (e) => {
     handleChange(e)
     handleEyeColor(e)
   }
 
-
-
-
+  //Sets eye color into state and updates image
   const handleHairColor = (e) => {
     const hairColorString = e.target.value
     setHairColor(hairColorString)
@@ -72,11 +81,13 @@ function CreateCard(){
     setImage(imageString)
   }
 
+  //Hair color handle change function
   const handleChangeAndHairColor = (e) => {
     handleChange(e)
     handleHairColor(e)
   }
 
+  //Sets glasses into state and updates image
   const handleGlasses = () => {
     if (!formdata.glasses){
       cardImages.forEach(image => {
@@ -95,11 +106,13 @@ function CreateCard(){
     setImage(imageString)
   }
  
+  //Glasses change function
   const handleChangeAndGlasses = (e) => {
     handleChange(e)
     handleGlasses()
   }
 
+  //Sets moustache into state and updates image
   const handleMoustache = () => {
     if (!formdata.moustache){
       cardImages.forEach(image => {
@@ -118,11 +131,13 @@ function CreateCard(){
     setImage(imageString)
   }
 
+  //Moustache change function
   const handleChangeAndMoustache = (e) => {
     handleChange(e)
     handleMoustache()
   }
 
+  //Sets Beard into state and updates image
   const handleBeard = () => {
     if (!formdata.beard){
       cardImages.forEach(image => {
@@ -141,6 +156,7 @@ function CreateCard(){
     setImage(imageString)
   }
 
+  //Beard change function
   const handleChangeAndBeard = (e) => {
     handleChange(e)
     handleBeard()
@@ -150,7 +166,7 @@ function CreateCard(){
 
   return (
     <div className="container">
-      <form className="forms">
+      <form className="forms" onSubmit={handleCardSubmit}>
         <Row>
           <Col s={12}>
             <Row>
@@ -374,16 +390,18 @@ function CreateCard(){
           </div>
         </div>
         }
-      </form>
-      <div className="card-submit-button">
-        <Button
-          type="submit"
-          waves="orange"
+        <div className="card-submit-button">
+          <Button
+            node="button"
+            type="submit"
+            waves="orange"
           
-        >
+          >
           Create Card
-        </Button>
-      </div>
+          </Button>
+        </div>
+      </form>
+      
     </div>
   )
 }
